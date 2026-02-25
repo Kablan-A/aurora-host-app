@@ -20,13 +20,14 @@ function Loading() {
 }
 
 export default function App() {
-	const notificationHandler = React.useCallback((notification: unknown) => {
-		const { message, date } = notification as {
-			message: string;
-			date: string;
-		};
-		toast(message, { description: `Received at: ${date}` });
-	}, []);
+	const notificationHandler = React.useCallback(
+		(notification: { id: string; message: string; date: string }) => {
+			toast(notification.message, {
+				description: `Received at: ${notification.date}`,
+			});
+		},
+		[],
+	);
 
 	React.useEffect(() => {
 		emitter.on("new-notification", notificationHandler);

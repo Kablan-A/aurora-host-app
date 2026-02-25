@@ -27,6 +27,13 @@ declare module 'remote/NotificationManager' {
 
 declare module 'remote/emitter' {
   import type { Emitter } from 'mitt';
-  const emitter: Emitter<Record<string, unknown>>;
+
+  type Notification = {
+    id: string;
+    message: string;
+    date: string;
+  };
+
+  const emitter: Emitter<Record<string, Notification>>;
   export default emitter;
 }
