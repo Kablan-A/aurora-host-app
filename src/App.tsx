@@ -1,5 +1,7 @@
 import React from "react";
 import { ErrorBoundary } from "react-error-boundary";
+import { toast } from "sonner";
+import emitter from "remote/emitter";
 
 const RemoteHeader = React.lazy(() => import("remote/Header"));
 const RemoteForm = React.lazy(() => import("remote/Form"));
@@ -18,6 +20,19 @@ function Loading() {
 }
 
 export default function App() {
+	const notificationHandler = React.useCallback((notification: unknown) => {
+		const { message, date } = notification as {
+			message: string;
+			date: string;
+		};
+		toast(message, { description: `Received at: ${date}` });
+	}, []);
+
+	React.useEffect(() => {
+		emitter.on("new-notification", notificationHandler);
+		return () => emitter.off("new-notification", notificationHandler);
+	}, [notificationHandler]);
+
 	return (
 		<>
 			<ErrorBoundary fallback={<ErrorFallback name='Header' />}>

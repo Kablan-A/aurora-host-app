@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App.tsx";
 import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 import { ApolloProvider } from "@apollo/client/react";
+import { Toaster } from "sonner";
 
 const client = new ApolloClient({
 	link: new HttpLink({ uri: import.meta.env.VITE_GRAPHQL_URL }),
@@ -20,6 +21,7 @@ enableMocking().then(() => {
 		<StrictMode>
 			<ApolloProvider client={client}>
 				<App />
+				<Toaster />
 			</ApolloProvider>
 		</StrictMode>,
 	);

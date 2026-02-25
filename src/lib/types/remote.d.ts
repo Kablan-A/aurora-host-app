@@ -24,3 +24,9 @@ declare module 'remote/NotificationManager' {
   const NotificationManager: React.ComponentType;
   export default NotificationManager;
 }
+
+declare module 'remote/emitter' {
+  import type { Emitter } from 'mitt';
+  const emitter: Emitter<Record<string, unknown>>;
+  export default emitter;
+}
