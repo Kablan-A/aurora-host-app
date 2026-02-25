@@ -34,12 +34,7 @@ export default function App() {
 					gap: "1rem",
 				}}
 			>
-				<div
-					style={{
-						maxWidth: "20rem",
-						margin: "0 auto",
-					}}
-				>
+				<div style={{ maxWidth: "20rem" }}>
 					<ErrorBoundary fallback={<ErrorFallback name='Form' />}>
 						<React.Suspense fallback={<Loading />}>
 							<RemoteForm />
@@ -49,7 +44,10 @@ export default function App() {
 
 				<ErrorBoundary fallback={<ErrorFallback name='Input' />}>
 					<React.Suspense fallback={<Loading />}>
-						<RemoteInput placeholder='Type something...' />
+						<RemoteInput
+							placeholder='Type something...'
+							style={{ maxWidth: "20rem" }}
+						/>
 					</React.Suspense>
 				</ErrorBoundary>
 
