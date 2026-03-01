@@ -1,27 +1,25 @@
-import * as React from 'react';
-
 declare module 'remote/Header' {
-  const Header: React.ComponentType;
+  const Header: import('react').ComponentType;
   export default Header;
 }
 
 declare module 'remote/Form' {
-  const Form: React.ComponentType;
+  const Form: import('react').ComponentType;
   export default Form;
 }
 
 declare module 'remote/Input' {
-  const Input: React.ComponentType<React.ComponentProps<"input">>;
+  const Input: import('react').ComponentType<import('react').ComponentProps<"input">>;
   export default Input;
 }
 
 declare module 'remote/Catalog' {
-  const Catalog: React.ComponentType;
+  const Catalog: import('react').ComponentType;
   export default Catalog;
 }
 
 declare module 'remote/NotificationManager' {
-  const NotificationManager: React.ComponentType;
+  const NotificationManager: import('react').ComponentType;
   export default NotificationManager;
 }
 
